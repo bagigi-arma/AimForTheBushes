@@ -26,11 +26,14 @@ if (getArray (configOf _vehicle >> QGVAR(boatPositions)) isEqualTo []) exitWith 
 
 lbClear _ctrl;
 
+private _cfgVehicles = configFile >> "CfgVehicles";
+private _cfgFactionClasses = configFile >> "CfgFactionClasses";
+
 {
-    private _vehicleConfig = configFile >> "CfgVehicles" >> _x;
+    private _vehicleConfig = _cfgVehicles >> _x;
     private _vehicleName = getText (_vehicleConfig >> "displayName");
 
-    private _factionConfig = configFile >> "CfgFactionClasses" >> (getText (_vehicleConfig >> "faction"));
+    private _factionConfig = _cfgFactionClasses >> (getText (_vehicleConfig >> "faction"));
     private _factionName = getText (_factionConfig >> "displayName");
     private _factionIcon = getText (_factionConfig >> "icon");
 
